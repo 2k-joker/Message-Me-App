@@ -5,11 +5,15 @@ class MessagesController < ApplicationController
     message = current_user.messages.build(whitelist_message_params)
 
     if message.save
-      ActionCable.server.broadcast 'chatroom_channel', chat: message.body
+      ActionCable.server.broadcast 'chatroom_channel', chat: render_message(message)
     end
   end
   
   private
+
+  def render_message(message)
+    render(partial: 'message', locals: { message: message })
+  end
 
   def whitelist_message_params
     params.require(:message).permit(:body)
