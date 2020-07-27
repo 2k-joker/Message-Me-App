@@ -6,9 +6,9 @@
 <div class="ui two column grid">
   <div class="twelve wide column">
     <div class="ui fluid raised card chatbox">
-      <div class="content">
+      <h3 class="ui purple center aligned header" id="message-header">Activity</h3>
+      <div class="content" id="messages">
         <div class="ui feed" id="message-container">
-          <h4 class="ui horizontal divider header">Activity</h4>
           <%= render @messages %>
         </div>
       </div>
